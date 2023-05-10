@@ -40,5 +40,3 @@ module.exports = {
   },
   plugins: [],
 }
-
-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
