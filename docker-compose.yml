@@ -12,15 +12,15 @@ services:
       POSTGRES_ADMIN_USERNAME: recipe_scaler_admin
       POSTGRES_PASSWORD: andreaadrienlindsay
     volumes: [pgdata:/var/lib/postgresql/data]
-  backend_server:
-    container_name: backend_server
-    hostname: backend_server
+  frontend_server:
+    container_name: frontend_server
+    hostname: frontend_server
     image: docker-react-i
     build: 
       context: .
     ports: 
-      - 3000:3000
+      - 3000:80
 
 
-# volumes:
-#   pgdata:
+volumes:
+  pgdata:
