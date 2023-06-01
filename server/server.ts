@@ -12,7 +12,7 @@ async function main() {
 main()
 
   .then(async () => {
-
+    console.log("This is working");
     await prisma.$disconnect()
 
   })

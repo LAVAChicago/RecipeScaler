@@ -1,16 +1,26 @@
+version: "3.8"
+
 services:
- 
   recipe_scaler_db:
     container_name: recipe_scaler_db
     hostname: recipe_scaler_db
     image: postgres:15.2
     restart: always
     ports:
-      - "5432:5432"
+      - "5434:5434"
     environment:
       POSTGRES_ADMIN_USERNAME: recipe_scaler_admin
       POSTGRES_PASSWORD: andreaadrienlindsay
-    volumes: pgdata:/var/lib/postgresql/data
- 
-volumes:
-  pgdata:
+    volumes: [pgdata:/var/lib/postgresql/data]
+  backend_server:
+    container_name: backend_server
+    hostname: backend_server
+    image: docker-react-i
+    build: 
+      context: .
+    ports: 
+      - 3000:3000
+
+
+# volumes:
+#   pgdata:
