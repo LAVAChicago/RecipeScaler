@@ -2,16 +2,16 @@
 
 import { useState } from "react"
 
-type RecipeProps = {
-    id: number
-    recipeTitle: string
+interface Recipe {
+    id: number,
+    recipeTitle: string,
     servingScale: number
 }[]
 
-type RecipeIngredientProps = {
-    id: number
-    ingredientName: string
-    quantity: number
+interface RecipeIngredient {
+    id: number,
+    ingredientName: string,
+    quantity: number,
     unit: string
 }[]
 
@@ -23,15 +23,19 @@ async function getRecipes(): Promise<RecipeProps> {
     return res.json()
 }
 
-
-export default async function Recipe() {
+const Recipe = async () => {
     const data = await getRecipes()
 
-    const [recipeTitle, setRecipeTitle] = useState<string | null>("")
+    const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null)
+    const [ingredients, setIngredients] = useState<RecipeIngredient[] | null>(null)
 
-    const changeRecipeTitle = () => {
-        setRecipeTitle(null)
-    }
+    // const updateRecipeIngredients = (ingredients) = {
+
+    // }
+
+    const updateIngredientQuantities = (count: Number) => {
+        // RecipeIngredient.quantity * count
+    }    
 
     return (
         <main>
@@ -44,3 +48,5 @@ export default async function Recipe() {
 
     )
 }
+
+export default Recipe
