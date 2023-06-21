@@ -11,15 +11,22 @@ services:
     environment:
       POSTGRES_ADMIN_USERNAME: recipe_scaler_admin
       POSTGRES_PASSWORD: andreaadrienlindsay
-    volumes: [pgdata:/var/lib/postgresql/data]
-  frontend_server:
-    container_name: frontend_server
-    hostname: frontend_server
-    image: docker-react-i
-    build: 
-      context: .
-    ports: 
-      - 3000:80
+    volumes: 
+      - pgdata:/var/lib/postgresql/data
+  react-ui:
+    container_name: react-ui
+    hostname: react-ui
+    image: node:18
+    restart: always
+    build:
+      context: ./front-end-react
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    volumes:
+      - ./front-end-react:/front-end-react
+      - /front-end-react/node_modules
+    # command: /front-end-react/entrypoint.sh
 
 
 volumes:
