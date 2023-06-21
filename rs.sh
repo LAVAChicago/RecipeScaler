@@ -18,6 +18,7 @@ install() {
 run-front() {
     CONTAINER_ID=$(docker ps -aqf "name=react-ui")
     echo "Starting React Front End in container" $CONTAINER_ID
+    docker start $CONTAINER_ID
     docker exec $CONTAINER_ID /bin/bash -c "cd /front-end-react && npm start"
 }
 
