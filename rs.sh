@@ -1,7 +1,9 @@
 #!/bin/bash
 live() {
     echo "I hope you know what you are doing . . ."
+    echo "Hello? . . ."
     docker-compose up -d
+    echo "I am now alive."
 }
 kill() {
     echo "NOOOOOOOOOOOOOOOOOOOOO. . . . . ."
