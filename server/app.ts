@@ -1,5 +1,6 @@
 import bodyParser from "body-parser";
 import express from "express";
+import cors from "cors";
 import { APILogger } from "./logger/api.logger";
 // import { ObjectController } from "./controller/generic.object.controller";
 // import * as Models from "./model/model.index";
@@ -31,6 +32,7 @@ class App {
 
     // Configure Express middleware.
     private middleware(): void {
+        this.express.use(cors());
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({ extended: false }));
     }
@@ -41,6 +43,12 @@ class App {
 
         this.express.get("/", (req, res, next) => {
             res.send("Typescript App up and running.");
+        });
+
+        // Health Check for Server
+        this.express.get("/health", (req, res, next) => {
+            this.logger.info("Health check for server", {});
+            res.json({msg:"Server is alive."});
         });
 
         // swagger docs
