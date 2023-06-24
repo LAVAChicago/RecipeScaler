@@ -41,9 +41,11 @@ Application Setup
 3. Install all dependencies: `install`
 
         a. Install Only Front `install-front`
-        
+
         b. Install Only Back `install-back`
 4. Migrate Database: `db-migrate`
+
 **Will need to activate bash `. rs.sh;` for next steps.**
+
 5. Run Front in separate terminal `run-front`
 6. Run Server in separate terminal `run-back`
