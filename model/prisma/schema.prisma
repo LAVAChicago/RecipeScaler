@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id       Int       @id @default(autoincrement())
+  firstname     String
+  lastname      String
+  username      String
+  email         String    @unique
+  password      String
+  recipes       Recipe[]
+  reciperatings RecipeRating[]
+}
+
+model RecipeRating {
+  reciperating_id Int    @id @default(autoincrement())
+  recipe          Recipe @relation(fields: [recipe_id], references: [recipe_id])
+  recipe_id       Int
+  user            User   @relation(fields: [userid_id], references: [user_id])
+  userid_id       Int
+  rating          Int
+  comment         String
+}
+
+model Recipe {
+  recipe_id         Int    @id @default(autoincrement())
+  recipe_name       String
+  recipe_type       String  // i.e. "Desert", "Main Course"
+  creating_user     User   @relation(fields: [creating_user_id], references: [user_id])
+  creating_user_id  Int
+  date_created      DateTime
+  date_edited       DateTime
+  portions          Int
+  recipe_steps      RecipeStep[]
+  recipe_tags       RecipeTag[]  // dietary restriction flags, i.e. Gluten, Soy
+  recipe_parts      RecipePart[]  // i.e. Crust, Sauce, Toppings
+  chefs_notes       String
+  recipe_ratings    RecipeRating[]
+}
+
+model RecipeTag {
+  recipe_tag_id   Int           @id @default(autoincrement())
+  recipes         Recipe[]
+}
+
+model RecipeStep {
+  recipe_step_id              Int           @id @default(autoincrement())
+  recipe            Recipe @relation(fields: [recipe_id], references: [recipe_id])
+  recipe_id         Int
+  tools             Tool[]
+}
+
+model Tool {
+  tool_id                     Int           @id @default(autoincrement())
+  recipesteps                 RecipeStep[]
+}
+
+model RecipeIngredient {
+  recipe_ingredient_id         Int           @id @default(autoincrement())
+}
+
+model RecipePart {
+  recipe_part_id        Int    @id @default(autoincrement())
+  recipe                Recipe @relation(fields: [recipe_id], references: [recipe_id])
+  recipe_id             Int
+}
+
