@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node server.ts",
-    "dev": "./node_modules/nodemon/bin/nodemon.js",
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' server.ts",
     "dbmigrate": "boo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,7 @@
   "author": "Adrien Dion, Andrea Barr, Lindsay Mecher, Vadim Flaks",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "pg": "^8.7.3",
     "pine": "^1.1.1",
@@ -32,7 +33,7 @@
     "@types/swagger-jsdoc": "^6.0.0",
     "@types/swagger-ui-express": "^4.1.2",
     "dotenv": "^16.0.0",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.22",
     "typescript": "^4.1.3"
   }
 }
