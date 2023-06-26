@@ -4,7 +4,7 @@ import './index.css'
 export default function App() {
 
   return (
-    <div>
+    <div className="min-h-screen bg-violet-200">
       <PortionCounter />
     </div>
   );
