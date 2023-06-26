@@ -7,10 +7,17 @@ import {
     NotEmpty,
     AllowNull,
     ForeignKey,
-    BelongsTo
+    BelongsTo,
+    HasMany
 } from "sequelize-typescript";
 
-import { User } from "./user.model";
+import {
+    RecipePart,
+    RecipeIngredient,
+    RecipeRating,
+    RecipeStep,
+    User
+} from "./model.index";
 
 @Table(
     {
@@ -47,4 +54,14 @@ export class Recipe extends Model<Recipe>{
     @AllowNull(true)
     @Column
     chefs_notes: string;
+
+    @AllowNull(true)
+    @Column
+    source_link: string;
+
+    @HasMany(() => RecipePart)
+    recipe_parts: RecipePart[]
+
+    @HasMany(() => RecipeRating)
+    recipe_ratings: RecipeRating[]
 }

@@ -17,7 +17,7 @@ import {
 
 @Table(
     {
-        tableName: 'reciperating',
+        tableName: 'recipe_rating',
         timestamps: true
     }
 )
@@ -25,7 +25,7 @@ export class RecipeRating extends Model<RecipeRating>{
     @AutoIncrement
     @PrimaryKey
     @Column
-    reciperating_id!: number;
+    recipe_rating_id!: number;
 
     @ForeignKey(() => Recipe)
     @Column

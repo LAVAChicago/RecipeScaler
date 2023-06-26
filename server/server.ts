@@ -4,13 +4,15 @@ import { APILogger } from "./logger/api.logger";
 
 import { connect } from "./config/db.config";
 
+import { RawSQLQueries } from "./dev_utils/raw_sql_queries"
+
 const port = process.env.SERVER_PORT || 5000;
 
-
+// ********************************************************************
+// *********************** For Development ONLY ***********************
+// ********************************************************************
 if (process.argv[2] === "dbmigrate") {
-
     let db = connect();
-    // For Development
     let force = false;
     if (process.argv[3] === "force") {
         force = true;
@@ -22,8 +24,14 @@ if (process.argv[2] === "dbmigrate") {
             console.log("Applied migrations to existing data");
         }
     });
-    
+} else if (process.argv[2] === "dbpopulate") {
+    let raw = new RawSQLQueries();
+    raw.runQueries();
 } else {
+// ********************************************************************
+// ********************* Actual app begins here ***********************
+// ********************************************************************
+
     App.set("port", port);
     const server = http.createServer(App);
     server.listen(port);
