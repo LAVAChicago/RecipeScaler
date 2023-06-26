@@ -1,35 +1,54 @@
-import { useState } from "react"
-import updateIngredientQuantities from "./Recipe";
+import * as React from 'react';
+// import "../index.css"
 
 
-const portionCounter = () => {
-    const [count, setCount] = useState(0);
+// interface Recipe {
+//     id: number,
+//     recipeTitle: string
+// }
 
-    const adjustPortion = (adjustmentType: string) => {
-        if (adjustmentType === "increment") {
-            setCount(prev => prev + 1)
-        } else if (adjustmentType === "decrement") {
-            setCount(prev => prev + 1)
-        }
-        updateRecipeQuantities(count)
+// interface RecipeIngredient {
+//     id: number,
+//     ingredientName: string,
+//     quantity: number,
+//     unit: string,
+//     recipe: Recipe
+// }
+
+export default class PortionCounter extends React.Component {
+  state = {
+    count: 1,
+    selectedRecipe: null,
+    ingredients: {}
+  };
+
+  increment = () => {
+    this.setState({
+        count: (this.state.count + 1)
+    });
+  };
+
+  decrement = () => {
+    if (this.state.count > 1) {
+        this.setState({
+            count: (this.state.count - 1)
+        });
     }
+  };
 
-    const updateRecipeQuantities = (count: Number) => {
-        updateIngredientQuantities(count)
-    }
+//   updateIngredientQuantities = () => {}
 
+  render () {
     return (
-        <section>
-            <h1>{count}</h1>
-            <div className="row">
-                <button onClick={adjustPortion("increment")}>+</button>
-                <button onClick={adjustPortion("decrement")}>-</button>
-            </div>
-            <div className="row">
-                <button onClick={() => setCount(1)}>Reset</button>
-            </div>
-        </section>
-    )
+      <div className="font-bold text-center">
+        <h1 className="text-3xl">Portion Size: {this.state.count}</h1>
+        <button className="text-2xl" onClick={this.increment}>+</button>
+        <span> </span>
+        <span> </span>
+        <button className="text-2xl" onClick={this.decrement}>-</button>
+        <span> </span>
+        <button onClick={() => this.setState({count: 1})}>Reset</button>
+      </div>
+    );
+  }
 }
-
-export default portionCounter

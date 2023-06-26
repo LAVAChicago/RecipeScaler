@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import PortionCounter from './components.tsx/PortionIncrementer';
+import './index.css'
 
-
-function App() {
-  const [count, setCount] = useState<number | null>(null);
+export default function App() {
 
   return (
-    <div className="App">
-
+    <div>
+      <PortionCounter />
     </div>
   );
 }
-
-
-export default App;
