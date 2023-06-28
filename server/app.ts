@@ -5,7 +5,7 @@ import { APILogger } from "./logger/api.logger";
 // import * as Models from "./model/model.index";
 import 'dotenv/config'
 
-import { userRouter } from "./routes/user.routes"
+import * as routeIndex from "./routes/route.index";
 
 class App {
 
@@ -27,7 +27,8 @@ class App {
 
     private routes(): void {
 
-        this.express.use("/api/user", userRouter);
+        this.express.use("/api/user", routeIndex.userRouter);
+        this.express.use("/api/recipe", routeIndex.recipeRouter);
 
         this.express.get("/", (req, res, next) => {
             res.send("Typescript App up and running.");

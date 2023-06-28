@@ -12,6 +12,11 @@ import {
     NotEmpty
 } from "sequelize-typescript";
 
+/*
+Ingredient tags are things like "dairy", "gluten", "meat", and other identifiers
+for dietary restrictions that should help search and filtering.
+*/
+
 @Table(
     {
         tableName: 'tag',

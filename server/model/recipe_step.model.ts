@@ -20,6 +20,13 @@ import {
     Tool
 } from "./model.index";
 
+/*
+Not to be confused with recipe part, although we may want to establish a
+connection between the two (TODO), Recipe Steps are instructions for 
+carrying out actions with tools and ingredients (or ingredients - see
+recipe_step_ingredient file comment).
+*/
+
 @Table(
     {
         tableName: 'recipe_step',

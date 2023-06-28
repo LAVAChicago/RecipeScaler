@@ -19,13 +19,13 @@ class IngredientUnit {
 }
 
 class Ingredient {
-    product: Product;
+    product: Ingredient;
     unit: IngredientUnit;
     base_amount: number;
     optional: boolean;
 
     constructor(
-        product: Product,
+        product: Ingredient,
         unit: IngredientUnit,
         base_amount: number,
         optional: boolean = false

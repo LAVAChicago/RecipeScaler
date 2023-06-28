@@ -4,8 +4,11 @@ import { User } from "../model/model.index";
 import { ObjectRepository } from "./generic.object.repository";
 
 export class UserRepository extends ObjectRepository{
-    // This will not work for more complext operations, such as eager loading
-    // Individual repositories will be needed for specific models.
+    /*
+    Example custom repository. This looks like the best place to plant
+    custom view logic, including eager loading.
+    This particular inheritor differ
+    */
 
     private safeAttributes: string[];
 

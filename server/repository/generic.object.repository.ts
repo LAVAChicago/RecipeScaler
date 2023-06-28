@@ -62,7 +62,7 @@ export class ObjectRepository {
             object.updateddate = new Date().toISOString();
             data = await this.objectRespository.update({...object}, {
                 where: {
-                    id: object.id
+                    [this.objectPrimaryKey]: object[this.objectPrimaryKey]
                 }
             });
         } catch(err) {
@@ -76,7 +76,7 @@ export class ObjectRepository {
         try {
             data = await this.objectRespository.destroy({
                 where: {
-                    id: objectId
+                    [this.objectPrimaryKey]: objectId
                 }
             });
         } catch(err) {

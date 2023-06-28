@@ -30,8 +30,8 @@ export const connect = () => {
 
     // All models in use must be added here
     sequelize.addModels([
-        models.Product,
-        models.ProductTag,
+        models.Ingredient,
+        models.IngredientTag,
         models.Recipe,
         models.RecipePart,
         models.RecipeRating,

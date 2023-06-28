@@ -1,10 +1,12 @@
 import { connect } from "../config/db.config"
 import { QueryTypes } from "sequelize";
+import * as models from "../model/model.index";
+import { ObjectController } from "../controller/generic.object.controller";
 
 
 export class RawSQLQueries {
     public UnitsOfMeasure: string;
-    public Products: string;
+    public Ingredients: string;
     public User: string;
     public Recipe: string;
     public RecipeParts: string;
@@ -40,10 +42,10 @@ export class RawSQLQueries {
                 ('teaspoon', 'volume', FALSE, now(), now()),
                 ('tablespoon', 'volume', FALSE, now(), now())
         `;
-        this.Products = `
-            INSERT INTO product (
-                product_name,
-                product_description,
+        this.Ingredients = `
+            INSERT INTO ingredient (
+                ingredient_name,
+                ingredient_description,
                 createdat,
                 updatedat
             )
@@ -117,7 +119,7 @@ export class RawSQLQueries {
         this.RecipeIngredients = `
             INSERT INTO recipe_ingredient (
                 recipe_part_id,
-                product_id,
+                ingredient_id,
                 unit_of_measure_id,
                 amount,
                 ingredient_optional,
@@ -142,7 +144,7 @@ export class RawSQLQueries {
             )
         ).then(
             db.sequelize.query(
-                this.Products,
+                this.Ingredients,
                 { type: QueryTypes.INSERT }
             )
         ).then(
@@ -155,11 +157,18 @@ export class RawSQLQueries {
                 this.RecipeParts,
                 { type: QueryTypes.INSERT }
             )
-        // ).then(
-        //     db.sequelize.query(
-        //         this.RecipeIngredients,
-        //         { type: QueryTypes.INSERT }
-        //     )
+            // ).then(
+            //     db.sequelize.query(
+            //         this.RecipeIngredients,
+            //         { type: QueryTypes.INSERT }
+            //     )
+        ).then(() => {
+            const rPartController = new ObjectController(models.RecipePart);
+            rPartController.getAll().then(rParts => {
+                console.log("***************************************************");
+                console.log(rParts);
+            });
+        }
         );
     }
 }

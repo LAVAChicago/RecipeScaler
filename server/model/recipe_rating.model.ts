@@ -15,6 +15,9 @@ import {
     Recipe
 } from "./model.index";
 
+/*
+Pretty self-explanatory. 5-star ratings and optional text reviews.
+*/
 @Table(
     {
         tableName: 'recipe_rating',
@@ -44,7 +47,8 @@ export class RecipeRating extends Model<RecipeRating>{
     @NotEmpty
     @AllowNull(false)
     @Column
-    rating!: number;
+    rating!: number; // <-- (TODO) Chose a better datatype 
+    //for storing integers from 1 to 5
 
     @Column
     comment: string;

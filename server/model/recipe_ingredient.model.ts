@@ -13,7 +13,7 @@ import {
 
 import {
     RecipePart,
-    Product,
+    Ingredient,
     UnitOfMeasure
 } from "./model.index";
 
@@ -23,6 +23,12 @@ import {
         timestamps: true
     }
 )
+
+/*
+Despite having "Recipe" in the name, this table is actually linked to the
+RecipePart. This is the meat of the app, where the amounts we are scaling
+actually live.
+*/
 
 export class RecipeIngredient extends Model<RecipeIngredient>{
     @AutoIncrement
@@ -37,12 +43,12 @@ export class RecipeIngredient extends Model<RecipeIngredient>{
     @BelongsTo(() => RecipePart)
     recipe_part: RecipePart;
     
-    @ForeignKey(() => Product)
+    @ForeignKey(() => Ingredient)
     @Column
-    product_id!: number;
+    ingredient_id!: number;
 
-    @BelongsTo(() => Product)
-    product: Product;    
+    @BelongsTo(() => Ingredient)
+    ingredient: Ingredient;    
 
     @ForeignKey(() => UnitOfMeasure)
     unit_of_measure_id!: number
@@ -52,7 +58,7 @@ export class RecipeIngredient extends Model<RecipeIngredient>{
 
     @AllowNull(true)
     @Column(DataType.DECIMAL)
-    amount: number
+    amount: number // <<-------- Important, but still nullable. Null means "to taste"
 
     @AllowNull(false)
     @Default(false)

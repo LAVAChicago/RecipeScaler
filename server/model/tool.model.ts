@@ -9,6 +9,12 @@ import {
     NotEmpty
 } from "sequelize-typescript";
 
+/*
+Kitchen tools are most likely to be used for filtering purposes, i.e.
+"I don't have access to a stand mixer now, so don't show me recipes
+that absolutely require it."
+*/
+
 @Table(
     {
         tableName: 'tool',

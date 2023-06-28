@@ -9,6 +9,12 @@ import {
     Unique
 } from "sequelize-typescript";
 
+/*
+(TODO) Finalize access level permissions.
+Who gets to create new ingredients? Who gets to see whose ingredients?
+Who gets to see whose recipes?
+*/
+
 @Table(
     {
         tableName: 'rs_user',  // PSQL preserves 'user' for its own internal use
@@ -24,7 +30,8 @@ export class User extends Model<User>{
     @AllowNull(false)
     @NotEmpty
     @Column
-    access_level!: string
+    access_level!: string  // <<--- Different access levels are likely to
+    // require substantially different UI setups.
 
     @AllowNull(true)
     @NotEmpty
@@ -50,5 +57,5 @@ export class User extends Model<User>{
     @AllowNull(false)
     @NotEmpty
     @Column
-    password!: string
+    password!: string  // <<--- hash, salt, and obfuscate this mother
 }

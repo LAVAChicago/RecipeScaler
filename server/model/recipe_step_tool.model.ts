@@ -19,6 +19,11 @@ import {
     Tool
 } from "./model.index";
 
+/*
+The join table between step and tool is the only way to collect the list
+of tools used in the recipe. (TODO) May need an index to speed up collection
+*/
+
 @Table(
     {
         tableName: 'recipe_step_tool',

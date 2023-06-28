@@ -1,5 +1,5 @@
-import { Product } from "./product.model";
-import { ProductTag } from "./product_tag.model";
+import { Ingredient } from "./ingredient.model";
+import { IngredientTag } from "./ingredient_tag.model";
 import { Recipe } from "./recipe.model";
 import { RecipePart } from "./recipe_part.model";
 import { RecipeIngredient } from "./recipe_ingredient.model";
@@ -18,8 +18,8 @@ import { User } from "./user.model";
 // When creating a new model - add it here
 
 export {
-    Product,
-    ProductTag,
+    Ingredient,
+    IngredientTag,
     Recipe,
     RecipePart,
     RecipeIngredient,
