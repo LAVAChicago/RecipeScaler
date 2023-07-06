@@ -33,33 +33,19 @@ Testing Pushing
 DataBase Setup
 ==============
 1. install docker/Docker Desktop
-2. commnand line/bash stuff:
-        all of this is sus and subject to change
-         |
-        \|/
-         v
-        docker pull postgres:alpine
-        docker run --name recipe_scaler_db -e POSTGRES_PASSWORD=adrienandrealindsay -d -p 5432:5432 postgres:alpine 
-        sudo -u postgres psql -c 'create database test;'
 
-
-        docker exec -it recipe_scaler_db bash -c "sudo -u postgres psql -c 'createuser  -s -i -d -r -l -w rsdb_admin ;'"
-        docker exec -it recipe_scaler_db bash -c "
-                sudo -u postgres psql -c 'ALTER ROLE rsdb_admin WITH PASSWORD 'wert66';'
-        "
-        docker exec -it recipe_scaler_db bash -c "
-                sudo -u postgres createdb rsdb -O rsdb_admin;'
-        "
-        
-        # Go straight into PSQL terminal as user `postgres`
-        docker exec -it recipe_scaler_db bash -c 'psql -U postgres'
-
-            CREATE USER rsdb_admin WITH SUPERUSER PASSWORD 'adrienandrealindsay';
-
-        # Connect to Recipe Scaler DB as its admin 
-        docker exec -it recipe_scaler_db bash -c 'psql -d rsdb -U rsdb_admin'        
-
-Server Setup
+Application Setup
 ==============
-1. npm install
-2. npx ts-node server/server.ts
+1. Activate bash script: `. rs.sh;`
+2. Run Docker container: `live`
+3. Install all dependencies: `install`
+
+        a. Install Only Front `install-front`
+
+        b. Install Only Back `install-back`
+4. Migrate Database: `db-migrate`
+
+**Will need to activate bash `. rs.sh;` for next steps.**
+
+5. Run Front in separate terminal `run-front`
+6. Run Server in separate terminal `run-back`

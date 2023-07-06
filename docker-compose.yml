@@ -1,16 +1,65 @@
+version: "3.8"
+
 services:
- 
   recipe_scaler_db:
     container_name: recipe_scaler_db
     hostname: recipe_scaler_db
     image: postgres:15.2
     restart: always
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    networks:
+      customnetwork:
+        ipv4_address: 172.20.0.2
     ports:
-      - "5432:5432"
+      - "5434:5432"
     environment:
       POSTGRES_ADMIN_USERNAME: recipe_scaler_admin
       POSTGRES_PASSWORD: andreaadrienlindsay
-    volumes: pgdata:/var/lib/postgresql/data
- 
+    volumes: 
+      - pgdata:/var/lib/postgresql/data
+      - ./dbmigrations/initial.sql:/docker-entrypoint-initdb.d/intial.sql
+  backend:
+    container_name: backend
+    hostname: backend
+    image: node:18
+    restart: always
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      customnetwork:
+        ipv4_address: 172.20.0.3
+    stdin_open: true
+    volumes:
+      - ./server:/server
+  react-ui:
+    container_name: react-ui
+    hostname: react-ui
+    image: node:18
+    restart: always
+    build:
+      context: ./front-end-react
+    ports:
+      - "3000:3000"
+    networks:
+      customnetwork:
+        ipv4_address: 172.20.0.4
+    stdin_open: true
+    volumes:
+      - ./front-end-react:/front-end-react
+      - /front-end-react/node_modules
+
+
 volumes:
   pgdata:
+
+networks:
+  customnetwork:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

@@ -8,6 +8,7 @@ export const connect = () => {
     const userName = process.env.DB_USER;
     const password = process.env.DB_PASSWORD;
     const dialect: any = process.env.DB_DIALECT;
+    const port: any = process.env.DB_PORT;
 
     const operatorsAliases: any = false;
 
@@ -20,6 +21,7 @@ export const connect = () => {
         },
         operatorsAliases,
         repositoryMode: true,
+        port: port,
         pool: {
             max: 10,
             min: 0,
