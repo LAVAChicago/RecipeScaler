@@ -47,7 +47,7 @@ export class Ingredient extends Model<Ingredient>{
     @AllowNull(true)
     @NotEmpty
     @Column
-    ingredient_description!: string
+    ingredient_description: string
 
     @BelongsToMany(() => Tag, () => IngredientTag)
     ingredient_tags: Tag[]

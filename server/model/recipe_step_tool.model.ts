@@ -51,4 +51,6 @@ export class RecipeStepTool extends Model<RecipeStepTool>{
     @BelongsTo(() => Tool)
     tool: Tool
 
+    @Column
+    tool_optional: boolean
 }

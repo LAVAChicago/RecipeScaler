@@ -55,9 +55,6 @@ export class RecipePart extends Model<RecipePart>{
     @HasMany(() => RecipeIngredient)
     recipe_ingredients: RecipeIngredient[]
 
-    @HasMany(() => RecipeStep)
-    recipe_steps: RecipeStep[]
-
     @AllowNull(false)
     @Column
     recipe_part_number: number // <<---- Essentially index in parts array.
