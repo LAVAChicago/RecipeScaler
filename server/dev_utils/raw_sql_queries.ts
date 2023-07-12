@@ -10,7 +10,7 @@ export class RawSQLQueries {
     public User: string;
     public Recipe: string;
     public RecipeParts: string;
-    public RecipeIngredients: string;
+    public RecipePartIngredients: string;
     public RecipeSteps: string;
 
     constructor() {
@@ -116,7 +116,7 @@ export class RawSQLQueries {
             FROM recipe
             WHERE recipe.recipe_name='Praga Cake'
         `;
-        this.RecipeIngredients = `
+        this.RecipePartIngredients = `
             INSERT INTO recipe_ingredient (
                 recipe_part_id,
                 ingredient_id,
@@ -159,7 +159,7 @@ export class RawSQLQueries {
             )
             // ).then(
             //     db.sequelize.query(
-            //         this.RecipeIngredients,
+            //         this.RecipePartIngredients,
             //         { type: QueryTypes.INSERT }
             //     )
         ).then(() => {

@@ -37,7 +37,7 @@ export const connect = () => {
         models.Recipe,
         models.RecipePart,
         models.RecipeRating,
-        models.RecipeIngredient,
+        models.RecipePartIngredient,
         models.RecipeRating,
         models.RecipeStepIngredient,
         models.RecipeStepTool,

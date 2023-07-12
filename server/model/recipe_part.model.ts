@@ -13,7 +13,7 @@ import {
 
 import {
     Recipe,
-    RecipeIngredient,
+    RecipePartIngredient,
     RecipeStep
 } from "./model.index"
 
@@ -52,8 +52,8 @@ export class RecipePart extends Model<RecipePart>{
     @BelongsTo(() => Recipe)
     recipe: Recipe;
 
-    @HasMany(() => RecipeIngredient)
-    recipe_ingredients: RecipeIngredient[]
+    @HasMany(() => RecipePartIngredient)
+    recipe_ingredients: RecipePartIngredient[]
 
     @AllowNull(false)
     @Column

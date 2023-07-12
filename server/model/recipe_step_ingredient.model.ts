@@ -15,7 +15,7 @@ import {
 } from "sequelize-typescript";
 
 import {
-    RecipeIngredient,
+    RecipePartIngredient,
     RecipeStep,
 } from "./model.index";
 
@@ -39,12 +39,12 @@ export class RecipeStepIngredient extends Model<RecipeStepIngredient>{
     @Column
     recipe_step_ingredient_id!: number
 
-    @ForeignKey(() => RecipeIngredient)
+    @ForeignKey(() => RecipePartIngredient)
     @Column
     recipe_ingredient_id!: number
 
-    @BelongsTo(() => RecipeIngredient)
-    recipe_ingredient: RecipeIngredient
+    @BelongsTo(() => RecipePartIngredient)
+    recipe_part_ingredient: RecipePartIngredient
 
     @ForeignKey(() => RecipeStep)
     @Column

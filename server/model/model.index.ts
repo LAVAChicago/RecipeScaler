@@ -2,7 +2,7 @@ import { Ingredient } from "./ingredient.model";
 import { IngredientTag } from "./ingredient_tag.model";
 import { Recipe } from "./recipe.model";
 import { RecipePart } from "./recipe_part.model";
-import { RecipeIngredient } from "./recipe_ingredient.model";
+import { RecipePartIngredient } from "./recipe_ingredient.model";
 import { RecipeRating } from "./recipe_rating.model";
 import { RecipeStep } from "./recipe_step.model";
 import { RecipeStepIngredient } from "./recipe_step_ingredient.model";
@@ -22,7 +22,7 @@ export {
     IngredientTag,
     Recipe,
     RecipePart,
-    RecipeIngredient,
+    RecipePartIngredient,
     RecipeRating,
     RecipeStep,
     RecipeStepIngredient,

@@ -30,11 +30,11 @@ RecipePart. This is the meat of the app, where the amounts we are scaling
 actually live.
 */
 
-export class RecipeIngredient extends Model<RecipeIngredient>{
+export class RecipePartIngredient extends Model<RecipePartIngredient>{
     @AutoIncrement
     @PrimaryKey
     @Column
-    recipe_ingredient_id!: number
+    recipe_part_ingredient_id!: number
 
     @ForeignKey(() => RecipePart)
     @Column

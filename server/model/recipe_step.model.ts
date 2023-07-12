@@ -14,7 +14,7 @@ import {
 
 import {
     Recipe,
-    RecipeIngredient,
+    RecipePartIngredient,
     RecipeStepIngredient,
     RecipeStepTool,
     Tool
@@ -55,6 +55,6 @@ export class RecipeStep extends Model<RecipeStep>{
     @BelongsToMany(() => Tool, () => RecipeStepTool)
     tools: Tool[]
 
-    @BelongsToMany(() => RecipeIngredient, () => RecipeStepIngredient)
-    recipe_ingredients: RecipeIngredient[]
+    @BelongsToMany(() => RecipePartIngredient, () => RecipeStepIngredient)
+    recipe_ingredients: RecipePartIngredient[]
 }
