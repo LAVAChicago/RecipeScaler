@@ -4,24 +4,14 @@ import cors from "cors";
 import { APILogger } from "./logger/api.logger";
 // import { ObjectController } from "./controller/generic.object.controller";
 // import * as Models from "./model/model.index";
-import swaggerUi from 'swagger-ui-express';
-import fs from 'fs';
 import 'dotenv/config'
 
-import { userRouter } from "./routes/user.routes"
+import * as routeIndex from "./routes/route.index";
 
 class App {
 
     public express: express.Application;
     public logger: APILogger;
-
-    /* Swagger files start */
-    private swaggerFile: any = (process.cwd()+"/swagger/swagger.json");
-    private swaggerData: any = fs.readFileSync(this.swaggerFile, 'utf8');
-    private customCss: any = fs.readFileSync((process.cwd()+"/swagger/swagger.css"), 'utf8');
-    private swaggerDocument = JSON.parse(this.swaggerData);
-    /* Swagger files end */
-
 
     constructor() {
         this.express = express();
@@ -39,7 +29,8 @@ class App {
 
     private routes(): void {
 
-        this.express.use("/api/user", userRouter);
+        this.express.use("/api/user", routeIndex.userRouter);
+        this.express.use("/api/recipe", routeIndex.recipeRouter);
 
         this.express.get("/", (req, res, next) => {
             res.send("Typescript App up and running.");
@@ -50,10 +41,6 @@ class App {
             this.logger.info("Health check for server", {});
             res.json({msg:"Server is alive."});
         });
-
-        // swagger docs
-        this.express.use('/api/docs', swaggerUi.serve,
-            swaggerUi.setup(this.swaggerDocument, null, null, this.customCss));
 
         // handle undefined routes
         this.express.use("*", (req, res, next) => {

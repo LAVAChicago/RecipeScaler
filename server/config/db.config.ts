@@ -10,16 +10,15 @@ export const connect = () => {
     const dialect: any = process.env.DB_DIALECT;
     const port: any = process.env.DB_PORT;
 
-    console.log('dialect  ', dialect)
-    console.log('Db port  ', port)
-    console.log('Db Host  ', hostName)
-    console.log('Db database  ', database)
-
     const operatorsAliases: any = false;
 
     const sequelize = new Sequelize(database, userName, password, {
         host: hostName,
         dialect,
+        define: {
+            "createdAt": "createdat",
+            "updatedAt": "updatedat"
+        },
         operatorsAliases,
         repositoryMode: true,
         port: port,
@@ -31,10 +30,22 @@ export const connect = () => {
         }
     });
 
+    // All models in use must be added here
     sequelize.addModels([
-        models.User,
+        models.Ingredient,
+        models.IngredientTag,
         models.Recipe,
-        models.RecipeRating
+        models.RecipePart,
+        models.RecipeRating,
+        models.RecipePartIngredient,
+        models.RecipeRating,
+        models.RecipeStepIngredient,
+        models.RecipeStepTool,
+        models.RecipeStep,
+        models.Tag,
+        models.Tool,
+        models.UnitOfMeasure,
+        models.User
     ]);
 
     const db: any = {};

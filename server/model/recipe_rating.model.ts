@@ -15,9 +15,12 @@ import {
     Recipe
 } from "./model.index";
 
+/*
+Pretty self-explanatory. 5-star ratings and optional text reviews.
+*/
 @Table(
     {
-        tableName: 'reciperating',
+        tableName: 'recipe_rating',
         timestamps: true
     }
 )
@@ -25,7 +28,7 @@ export class RecipeRating extends Model<RecipeRating>{
     @AutoIncrement
     @PrimaryKey
     @Column
-    reciperating_id!: number;
+    recipe_rating_id!: number;
 
     @ForeignKey(() => Recipe)
     @Column
@@ -44,7 +47,8 @@ export class RecipeRating extends Model<RecipeRating>{
     @NotEmpty
     @AllowNull(false)
     @Column
-    rating!: number;
+    rating!: number; // <-- (TODO) Chose a better datatype 
+    //for storing integers from 1 to 5
 
     @Column
     comment: string;
