@@ -13,6 +13,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "babel": "^6.23.0",
+    "nodemon": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
@@ -21,7 +22,6 @@
   },
   "scripts": {
     "start": "npm run tailwind:css && react-scripts start",
-    "tailwind:css": "tailwind build  -c tailwind.config.js -i src/tailwind.css -o src/index.css",
     "build": "npm run tailwind:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -46,7 +46,7 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.2",
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "tailwindcss": "^3.3.2"
   }
 }
