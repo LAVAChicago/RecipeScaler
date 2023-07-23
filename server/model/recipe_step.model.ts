@@ -13,8 +13,8 @@ import {
 } from "sequelize-typescript";
 
 import {
-    RecipePart,
-    RecipeIngredient,
+    Recipe,
+    RecipePartIngredient,
     RecipeStepIngredient,
     RecipeStepTool,
     Tool
@@ -40,12 +40,12 @@ export class RecipeStep extends Model<RecipeStep>{
     @Column
     recipe_step_id!: number
 
-    @ForeignKey(() => RecipePart)
+    @ForeignKey(() => Recipe)
     @Column
-    recipe_part_id!: number;
+    recipe_id!: number;
 
-    @BelongsTo(() => RecipePart)
-    recipe_part: RecipePart;
+    @BelongsTo(() => Recipe)
+    recipe_part: Recipe;
 
     @AllowNull(false)
     @NotEmpty
@@ -55,6 +55,6 @@ export class RecipeStep extends Model<RecipeStep>{
     @BelongsToMany(() => Tool, () => RecipeStepTool)
     tools: Tool[]
 
-    @BelongsToMany(() => RecipeIngredient, () => RecipeStepIngredient)
-    recipe_ingredients: RecipeIngredient[]
+    @BelongsToMany(() => RecipePartIngredient, () => RecipeStepIngredient)
+    recipe_ingredients: RecipePartIngredient[]
 }

@@ -14,7 +14,6 @@ import {
 
 import {
     RecipePart,
-    RecipeIngredient,
     RecipeRating,
     RecipeStep,
     User
@@ -79,6 +78,9 @@ export class Recipe extends Model<Recipe>{
 
     @HasMany(() => RecipePart)
     recipe_parts: RecipePart[] // <<--- (TODO) Figure out eager loading
+
+    @HasMany(() => RecipeStep)
+    recipe_steps: RecipeStep[]
 
     @HasMany(() => RecipeRating)
     recipe_ratings: RecipeRating[] // <<--- (TODO) Average rating calculation
