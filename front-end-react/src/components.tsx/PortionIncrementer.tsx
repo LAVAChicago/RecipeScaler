@@ -18,9 +18,25 @@ import * as React from 'react';
 export default class PortionCounter extends React.Component {
     state = {
         count: 1,
-        selectedRecipe: null,
-        ingredients: {}
+        selectedRecipeID: 1,
+        ingredients: {},
+        steps: {},
+
+        recipeResponse: {
+            recipe_name: "Test Name"
+        }
     };
+
+    fetchRecipeByID(selectedRecipeID: number) {
+        fetch("http://localhost:3001/api/recipe/1")
+            .then(res => this.setState({
+                recipeResponse: res
+            }))
+    }
+
+    componentDidMount = () => {
+        this.fetchRecipeByID(this.state.selectedRecipeID)
+    }
 
     increment = () => {
         this.setState({
@@ -38,11 +54,11 @@ export default class PortionCounter extends React.Component {
 
     //   updateIngredientQuantities = () => {}
 
-    render() {
+    render(recipeName: string = this.state.recipeResponse.recipe_name) {
         return (
             <>
                 <div>
-                    <h1 className="font-bold text-center pt-6 text-3xl">No-knead Bread</h1>
+                    <h1 className="font-bold text-center pt-6 text-3xl">{recipeName}</h1>
                 </div>
                 <div className="flex justify-center">
                     <table className="table-auto border-collapse border border-slate-400 m-0">
