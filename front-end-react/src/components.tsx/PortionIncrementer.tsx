@@ -2,9 +2,9 @@ import * as React from 'react';
 // import "../index.css"
 
 
-// interface Recipe {
+// type Recipe = {
 //     id: number,
-//     recipeTitle: string
+//     recipe_name: string
 // }
 
 // interface RecipeIngredient {
@@ -22,15 +22,16 @@ export default class PortionCounter extends React.Component {
         ingredients: {},
         steps: {},
 
-        recipeResponse: {
-            recipe_name: "Test Name"
-        }
+        recipeName: "",
+        recipeResponse: {}
     };
 
     fetchRecipeByID(selectedRecipeID: number) {
-        fetch("http://localhost:3001/api/recipe/1")
+        fetch("http://localhost:5000/api/recipe/1")
+            .then(res => res.json())
             .then(res => this.setState({
-                recipeResponse: res
+                recipeResponse: res,
+                recipeName: res.recipe_name
             }))
     }
 
@@ -54,11 +55,11 @@ export default class PortionCounter extends React.Component {
 
     //   updateIngredientQuantities = () => {}
 
-    render(recipeName: string = this.state.recipeResponse.recipe_name) {
+    render() {
         return (
             <>
                 <div>
-                    <h1 className="font-bold text-center pt-6 text-3xl">{recipeName}</h1>
+                    <h1 className="font-bold text-center pt-6 text-3xl">{this.state.recipeName}</h1>
                 </div>
                 <div className="flex justify-center">
                     <table className="table-auto border-collapse border border-slate-400 m-0">
