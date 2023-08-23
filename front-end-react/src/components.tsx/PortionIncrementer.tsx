@@ -17,21 +17,29 @@ import * as React from 'react';
 
 export default class PortionCounter extends React.Component {
     state = {
+        originalPortionSize: 1,
         count: 1,
         selectedRecipeID: 1,
         ingredients: {},
         steps: {},
 
+        recipe: {},
         recipeName: "",
-        recipeResponse: {}
+        recipeResponse: {},
+        chefNotes: "",
+        recipeType: ""
     };
 
     fetchRecipeByID(selectedRecipeID: number) {
         fetch("http://localhost:5000/api/recipe/1")
             .then(res => res.json())
             .then(res => this.setState({
-                recipeResponse: res,
-                recipeName: res.recipe_name
+                recipe: res,
+                recipeName: res.recipe_name,
+                chefNotes: res.chefs_notes,
+                recipeType: res.recipe_type,
+                originalPortionSize: res.portions,
+                count: res.portions
             }))
     }
 
@@ -56,23 +64,21 @@ export default class PortionCounter extends React.Component {
     //   updateIngredientQuantities = () => {}
 
     render() {
+        // console.log(this.state.recipe)
+        let originalPortionSize = this.state.originalPortionSize
+
         return (
             <>
-                <div>
-                    <h1 className="font-bold text-center pt-6 text-3xl">{this.state.recipeName}</h1>
+                <div className="">
+                    <h1 className="font-bold text-center py-6 text-3xl">{this.state.recipeName}</h1>
+                    <p className="text-center font-medium text-gray-600">Chef says: "{this.state.chefNotes}"</p>
                 </div>
                 <div className="flex justify-center">
                     <table className="table-auto border-collapse border border-slate-400 m-0">
                         <caption className="caption-top">
                             <p className="py-6 justify-center">
                                 <span className="rounded-md bg-gray-50 mx-3 px-2 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                                    bread
-                                </span>
-                                <span className="rounded-md bg-red-50 mx-3 px-2 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                                    simple
-                                </span>
-                                <span className="rounded-md bg-yellow-50 mx-3 px-2 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
-                                    contains: gluten
+                                    {this.state.recipeType}
                                 </span>
                             </p>
                             <p className="pt-6 justify-center mb-2 text-2xl">
@@ -86,7 +92,7 @@ export default class PortionCounter extends React.Component {
                                     <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={this.decrement}>
                                         -
                                     </button>
-                                    <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={() => this.setState({ count: 1 })}>
+                                    <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={() => this.setState({ count: originalPortionSize })}>
                                         Reset
                                     </button>
                                 </span>       
