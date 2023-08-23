@@ -27,11 +27,16 @@ export default class PortionCounter extends React.Component {
         recipeName: "",
         recipeResponse: {},
         chefNotes: "",
-        recipeType: ""
+        recipeType: "",
+        createdByUserID: 0,
+
+        chef: {},
+        chefFirstName: "",
+        chefLastName: ""
     };
 
     fetchRecipeByID(selectedRecipeID: number) {
-        fetch("http://localhost:5000/api/recipe/1")
+        fetch(`http://localhost:5000/api/recipe/${selectedRecipeID}`)
             .then(res => res.json())
             .then(res => this.setState({
                 recipe: res,
@@ -39,8 +44,22 @@ export default class PortionCounter extends React.Component {
                 chefNotes: res.chefs_notes,
                 recipeType: res.recipe_type,
                 originalPortionSize: res.portions,
-                count: res.portions
+                count: res.portions,
+                createdByUserID: res.creating_user_id
             }))
+            .then(() => this.fetchUserInfoForRecipe())
+    }
+
+    fetchUserInfoForRecipe() {
+        if (this.state.createdByUserID !== 0) {
+            fetch(`http://localhost:5000/api/user/${this.state.createdByUserID}`)
+            .then(res => res.json())
+            .then(res => this.setState({
+                chef: res,
+                chefFirstName: res.first_name,
+                chefLastName: res.last_name
+            }))
+        }
     }
 
     componentDidMount = () => {
@@ -64,14 +83,14 @@ export default class PortionCounter extends React.Component {
     //   updateIngredientQuantities = () => {}
 
     render() {
-        // console.log(this.state.recipe)
+        // console.log(this.state.chef)
         let originalPortionSize = this.state.originalPortionSize
 
         return (
             <>
                 <div className="">
                     <h1 className="font-bold text-center py-6 text-3xl">{this.state.recipeName}</h1>
-                    <p className="text-center font-medium text-gray-600">Chef says: "{this.state.chefNotes}"</p>
+                    <p className="text-center font-medium text-gray-600">Chef {this.state.chefFirstName} {this.state.chefLastName} says: "{this.state.chefNotes}"</p>
                 </div>
                 <div className="flex justify-center">
                     <table className="table-auto border-collapse border border-slate-400 m-0">
