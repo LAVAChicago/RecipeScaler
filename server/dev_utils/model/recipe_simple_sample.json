@@ -1,0 +1,178 @@
+{
+    "recipe_name": "no-knead bread",
+    "recipe_type": "bread",
+    "recipe_tags": ["bread", "simple", "gluten"],
+    "creating_user_id": 4,
+    "creating_user_name": "Vadim",
+    "date_created": "2023-05-10",
+    "date_edited": "2023-05-10",
+    "portions": 4,
+    "component_parts": [
+        {
+            "component_part_title": "dough",
+            "ingredients": [
+                {
+                    "product_name": "bread flour",
+                    "measure_unit": "gram",
+                    "base_amount": 300,
+                    "note": null,
+                    "optional": false
+                },
+                {
+                    "product_name": "instant dry yeast",
+                    "measure_unit": "gram",
+                    "base_amount": 2.5,
+                    "note": null,
+                    "optional": false
+                },
+                {
+                    "product_name": "salt",
+                    "measure_unit": "gram",
+                    "base_amount": 5,
+                    "note": null,
+                    "optional": false
+                },
+                {
+                    "product_name": "water",
+                    "measure_unit": "gram",
+                    "base_amount": 210,
+                    "note": "room temperature",
+                    "optional": false
+                }
+            ]
+        }
+    ],
+    "tools needed": [
+        {
+            "tool_name": "dutch oven, 5.5qt"
+        },
+        {
+            "tool_name": "mixing bowl"
+        },
+        {
+            "tool_name": "kitchen scale"
+        },
+        {
+            "tool_name": "parchment"
+        },
+        {
+            "tool_name": "oven"
+        }
+    ],
+    "step_sections": [
+        {
+            "step_section_number": 1,
+            "step_section_title": "mixing the dough",
+            "steps": [
+                {
+                    "step_number": 1,
+                    "step_description": "In a medium size mixing bowl combine the dry ingredients, and mix until salt and yeast are evenly distributed throughout the flour.",
+                    "step_duration": "5 minutes"
+                },
+                {
+                    "step_number": 2,
+                    "step_description": "Add water to the bowl and mix until no dry spots remain.",
+                    "step_duration": "5 minutes"
+                }
+            ]
+        },
+        {
+            "step_section_number": 2,
+            "step_section_title": "proofing",
+            "steps": [
+                {
+                    "step_number": 3,
+                    "step_description": "Cover up the dough and let it sit at room temperature for anywhere between 8 and 24 hours.",
+                    "step_duration": "8 hours or more"
+                }
+            ]
+        },
+        {
+            "step_section_number": 3,
+            "step_section_title": "building gluten",
+            "steps": [
+                {
+                    "step_number": 4,
+                    "step_description": "With a soaking wet hand scrape the risen dough into a ball, pull on one side to streth it out, then fold onto itself. Rotate the dough 90 degrees, pull at another side, stretch and fold again. Repeat at least 2 more times, then cover the dough back up and let rest for at least 30 minutes.",
+                    "step_duration": "30 min"
+                }
+            ]
+        },
+        {
+            "step_section_number": 4,
+            "step_section_title": "pre-heat oven",
+            "steps": [
+                {
+                    "step_number": 5,
+                    "step_description": "Place the dutch oven with the lid on into the oven and pre-heat the oven to 480 degrees Farenheit",
+                    "step_duration": "8 minutes"
+                }
+            ]
+        },
+        {
+            "step_section_number": 5,
+            "step_section_title": "shaping the loaf",
+            "steps": [
+                {
+                    "step_number": 6,
+                    "step_description": "While the oven is pre-heating, dust the dough in the ball with flour and turn it out of the bowl onto a flour-covered piece of parchment at least 12x12 inches in size. Repeat the stretch-and-fold step, then place the taught ball of dough on the parchment seam-side down, cover it with the bowl and let rest for 30 minutes",
+                    "step_duration": "30 minutes"
+                },
+                {
+                    "step_number": 7,
+                    "step_description": "Repeat the previous step",
+                    "step_duration": "30 minutes"
+                },
+                {
+                    "step_number": 8,
+                    "step_description": "Dust the dough with flour again, slightly flatten it on the parchement in a roughly square shape and squeeze out the largest bubbles.",
+                    "step_duration": "3 min"
+                },
+                {
+                    "step_number": 9,
+                    "step_description": "Pick two opposite corners of the dough, pull them towards each other and squeeze together, then pick the remaining corners and squeeze them together over the previous two.",
+                    "step_duration": "3 minutes"
+                },
+                {
+                    "step_number": 10,
+                    "step_description": "Flip the dough seam side down and use either a very sharp knife or a pair of scissors to make 3 evenly spaced incisions on the surface of the loaf to give steam ways to escape.",
+                    "step_duration": "3 minutes"
+                }
+                
+            ]
+        },
+        {
+            "step_section_number": 6,
+            "step_section_title": "baking the loaf",
+            "steps": [
+                {
+                    "step_number": 11,
+                    "step_description": "CAUTION, HOT. Pull the very hot dutch oven out of the heat, remove the lid, and, carefully lower the parchment with the loaf into the dutch oven. Place the lid back on, move the dutch oven back into the oven and let bake covered up for 20 minutes",
+                    "step_duration": "20 minutes"
+                },
+                {
+                    "step_number": 12,
+                    "step_description": "CAUTION, HOT. Remove the lid from the dutch oven and lower the oven temperature to 450 degrees Farenheit, then bake the loaf for additional 15 minutes.",
+                    "step_duration": "15 minutes"
+                },
+                {
+                    "step_number": 13,
+                    "step_description": "CAUTION, HOT. Kill the heat, pull the bread out of the dutch oven and let it cool for at least 20 minutes on a wire rack",
+                    "step_duration": "20 minutes"
+                }
+            ]
+        }
+    ],
+    "chefs_notes": [
+        "This recipe is VERY forgving. Too much flour, too little salt, etc? Doesn't matter, it'll still be good.",
+        "Best time to mix the dough? Late evening, before going to bed."
+    ],
+    "comments": [
+        {
+            "comment_author_id": 1,
+            "comment_author_name": "Andrea",
+            "comment_text": "Let it sit for at least half an hour after pulling from the oven! Warm bread is great, hot bread - not so much."
+        }
+    ]
+
+}
