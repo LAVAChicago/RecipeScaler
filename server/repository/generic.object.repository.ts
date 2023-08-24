@@ -5,22 +5,24 @@ export class ObjectRepository {
     // This will not work for more complext operations, such as eager loading
     // Individual repositories will be needed for specific models.
 
-    private logger: APILogger;
-    private db: any = {};
-    private objectRespository: any;
-    private objectLabel: string;
+    protected  logger: APILogger;
+    protected  db: any = {};
+    protected  objectRespository: any;
+    public objectLabel: string;
+    public objectPrimaryKey: string;
 
     constructor(ObjectModel) {
         this.db = connect();
         this.objectRespository = this.db.sequelize.getRepository(ObjectModel);
-        this.objectLabel = "object"; // (TODO) Find way to look up Model name
+        this.objectLabel = ObjectModel.name;
+        this.objectPrimaryKey = this.objectRespository.primaryKeyAttributes[0]
     }
 
     async getByID(id) {
         try {
-            const object = await this.objectRespository.find({
+            const object = await this.objectRespository.findOne({
                 where: {
-                    id: id
+                    [this.objectPrimaryKey]: id
                 }
             });
             console.log(`${this.objectLabel}:::`, object);
@@ -60,7 +62,7 @@ export class ObjectRepository {
             object.updateddate = new Date().toISOString();
             data = await this.objectRespository.update({...object}, {
                 where: {
-                    id: object.id
+                    [this.objectPrimaryKey]: object[this.objectPrimaryKey]
                 }
             });
         } catch(err) {
@@ -74,7 +76,7 @@ export class ObjectRepository {
         try {
             data = await this.objectRespository.destroy({
                 where: {
-                    id: objectId
+                    [this.objectPrimaryKey]: objectId
                 }
             });
         } catch(err) {
