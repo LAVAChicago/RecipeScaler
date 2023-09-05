@@ -25,7 +25,7 @@ install-back() {
 db-migrate() {
     CONTAINER_ID=$(docker ps -aqf "name=backend")
     echo "Installing gadgets for Back End Container" $CONTAINER_ID
-    docker exec $CONTAINER_ID /bin/bash -c "cd /server && npm start dbmigrate force"
+    sudo docker exec -it backend /bin/bash -c "cd /server && npm start dbmigrate force"
 }
 
 install() {
@@ -34,28 +34,28 @@ install() {
 }
 
 run-front() {
-    CONTAINER_ID=$(docker ps -aqf "name=react-ui")
+    CONTAINER_ID=$(sudo docker ps -aqf "name=react-ui")
     echo "Starting React Front End in container" $CONTAINER_ID
-    docker start $CONTAINER_ID
-    docker exec $CONTAINER_ID /bin/bash -c "cd /front-end-react && npm start"
+    sudo docker start $CONTAINER_ID
+    sudo docker exec $CONTAINER_ID /bin/bash -c "cd /front-end-react && npm start"
 }
 
 run-back() {
-    CONTAINER_ID=$(docker ps -aqf "name=backend")
+    CONTAINER_ID=$(sudo docker ps -aqf "name=backend")
     echo "Starting React Front End in container" $CONTAINER_ID
-    docker start $CONTAINER_ID
-    docker exec $CONTAINER_ID /bin/bash -c "cd /server && npm run dev"
+    sudo docker start $CONTAINER_ID
+    sudo docker exec $CONTAINER_ID /bin/bash -c "cd /server && npm run dev"
 }
 
 stop-front() {
     CONTAINER_ID=$(docker ps -aqf "name=react-ui")
     echo "Stoping React Front End in container" $CONTAINER_ID
-    docker stop $CONTAINER_ID
+    sudo docker stop $CONTAINER_ID
 }
 stop-back() {
     CONTAINER_ID=$(docker ps -aqf "name=backend")
     echo "Stoping Back End Server in container" $CONTAINER_ID
-    docker stop $CONTAINER_ID
+    sudo docker stop $CONTAINER_ID
 }
 
 vader() {

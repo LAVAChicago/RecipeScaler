@@ -28,7 +28,7 @@ services:
     restart: always
     build:
       context: ./server
-      dockerfile: ./Dockerfile
+      dockerfile: /home/abarrdev/RecipeScaler/Dockerfile
     ports:
       - "5000:5000"
     networks:

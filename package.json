@@ -21,8 +21,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm run tailwind:css && react-scripts start",
-    "build": "npm run tailwind:css && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "tailwind:css": "tailwind build  -c tailwind.config.js -i src/tailwind.css -o src/index.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stop": "taskkill -F -IM node.exe"

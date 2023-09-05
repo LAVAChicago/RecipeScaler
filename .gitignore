@@ -1,1 +1,5 @@
 node_modules
+docker-compose.yml
+front-end-react/package-lock.json
+.gitignore
+server/config/db.config.ts
