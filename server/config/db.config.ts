@@ -3,18 +3,18 @@ import * as models from "../model/model.index";
 
 export const connect = () => {
 
-    const database = process.env.DB;
-    const hostName = process.env.DB_HOST;
-    const userName = process.env.DB_USER;
-    const password = process.env.DB_PASSWORD;
-    const dialect: any = process.env.DB_DIALECT;
-    const port: any = process.env.DB_PORT;
+    const database = 'rsdb';
+    const hostName = '172.20.0.2';
+    const userName = 'rsdb_admin';
+    const password = 'wert66';
+    // const dialect = 'postgres';
+    const port: any = '5432';
 
-    const operatorsAliases: any = false;
+    const operatorsAliases: any = 0;
 
     const sequelize = new Sequelize(database, userName, password, {
         host: hostName,
-        dialect,
+        dialect: 'postgres',
         define: {
             "createdAt": "createdat",
             "updatedAt": "updatedat"
