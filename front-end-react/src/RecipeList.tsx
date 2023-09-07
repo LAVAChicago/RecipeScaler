@@ -1,5 +1,5 @@
 import * as React from "react";
-// import "./index.css"
+import { Link } from "react-router-dom";
 
 interface Recipe {
   recipe_id: number;
@@ -29,16 +29,19 @@ export default class RecipeList extends React.Component {
     render() {
         return (
         <>
-            <h1 className="font-bold text-center py-6 text-3xl">Recipe List</h1>
-            <div className="flex justify-center">
-                <ul className="">
-                {this.state.recipes.map((recipe) => (
-                    <li className="py-2" key={recipe.recipe_id}>
-                        <a href="http://localhost:3000/" className="">{recipe.recipe_name}</a>
-                    </li>
-                ))}
-                </ul>
-            </div>
+        <h1 className="font-bold text-center py-6 text-3xl">Recipe List</h1>
+        <div className="flex justify-center">
+            <ul className="">
+            {this.state.recipes.map((recipe) => (
+                <li className="py-2" key={recipe.recipe_id}>
+                    <a href="http://localhost:3000/" className="">{recipe.recipe_name}</a>
+                </li>
+            ))}
+            </ul>
+        </div>
+        <h3 className="font-bold text-center py-6">
+            <Link to="/recipe/new">Create New Recipe</Link>
+        </h3>
         </>
         );
     }
