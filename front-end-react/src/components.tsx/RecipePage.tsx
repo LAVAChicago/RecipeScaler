@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 // import "../index.css"
 
 
@@ -15,7 +15,7 @@ import * as React from 'react';
 //     recipe: Recipe
 // }
 
-export default class PortionCounter extends React.Component {
+export default class RecipePage extends React.Component {
     state = {
         originalPortionSize: 1,
         count: 1,

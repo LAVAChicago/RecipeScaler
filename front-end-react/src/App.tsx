@@ -1,11 +1,12 @@
-import PortionCounter from './components.tsx/PortionIncrementer';
+// import RecipePage from './components.tsx/RecipePage';
+import RecipeList from './components.tsx/RecipeList';
 import './index.css'
 
 export default function App() {
 
   return (
     <div>
-      <PortionCounter />
+      <RecipeList />
     </div>
   );
 }
